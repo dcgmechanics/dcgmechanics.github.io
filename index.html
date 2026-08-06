@@ -213,6 +213,7 @@ footer{padding:26px 0 44px;font-family:'IBM Plex Mono',monospace;font-size:11.5p
   .pipe .lane:nth-of-type(3){animation-delay:.24s}
   .pipe .lane:nth-of-type(4){animation-delay:.36s}
   .pipe .lane:nth-of-type(5){animation-delay:.48s}
+  .pipe .lane:nth-of-type(6){animation-delay:.60s}
 }
 @keyframes dash{to{stroke-dashoffset:-48}}
 @keyframes lanepulse{0%,100%{fill:#fff}50%{fill:var(--panel)}}
@@ -393,6 +394,18 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div>
           <h3>Shift-left security, published</h3>
           <p>At SMC Global Securities — a SEBI-regulated broking platform — I helped build an in-house DevSecOps pipeline inside AWS CodePipeline, defined end to end in Terraform: dependency scanning, static analysis, secret detection, container scanning, dynamic testing against the running application and port scanning, with every finding aggregated into Security Hub. It replaced a process where security review happened after QA, by which point fixes were expensive and releases were already late. The engineering write-up was published on SMC's tech blog, co-authored with the CPTO and the Director of Cloud Engineering.</p>
+<figure class="pipe">
+<svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CI/CD pipeline: commit, build, deploy, live — with secrets, SCA, SAST, container, DAST and port-scanning gates feeding findings into AWS Security Hub.">
+  <g class="flow" fill="none" stroke="var(--violet)" stroke-width="1.6"><path d="M136 43 H228"/><path d="M344 43 H436"/><path d="M552 43 H644"/><path d="M125 84 H755"/><path d="M78 60 V84"/><path d="M286 60 V84"/><path d="M494 60 V84"/><path d="M702 60 V84"/><path d="M125 84 V104"/><path d="M251 84 V104"/><path d="M377 84 V104"/><path d="M503 84 V104"/><path d="M629 84 V104"/><path d="M755 84 V104"/><path d="M125 130 C125 158 440 152 440 174"/><path d="M251 130 C251 158 440 152 440 174"/><path d="M377 130 C377 158 440 152 440 174"/><path d="M503 130 C503 158 440 152 440 174"/><path d="M629 130 C629 158 440 152 440 174"/><path d="M755 130 C755 158 440 152 440 174"/></g>
+  <rect class="lane" x="66" y="104" width="118" height="26" rx="3"/><rect class="lane" x="192" y="104" width="118" height="26" rx="3"/><rect class="lane" x="318" y="104" width="118" height="26" rx="3"/><rect class="lane" x="444" y="104" width="118" height="26" rx="3"/><rect class="lane" x="570" y="104" width="118" height="26" rx="3"/><rect class="lane" x="696" y="104" width="118" height="26" rx="3"/>
+  <rect class="node" x="20" y="26" width="116" height="34" rx="3"/><rect class="node" x="228" y="26" width="116" height="34" rx="3"/><rect class="node" x="436" y="26" width="116" height="34" rx="3"/><rect class="node" x="644" y="26" width="116" height="34" rx="3"/>
+  <rect class="node" x="330" y="174" width="220" height="30" rx="3"/>
+  <text class="lbl" x="78" y="48">Commit</text><text class="lbl" x="286" y="48">Build</text><text class="lbl" x="494" y="48">Deploy</text><text class="lbl" x="702" y="48">Live</text>
+  <text class="lbl-s" x="125" y="121">secrets</text><text class="lbl-s" x="251" y="121">sca</text><text class="lbl-s" x="377" y="121">sast</text><text class="lbl-s" x="503" y="121">container</text><text class="lbl-s" x="629" y="121">dast</text><text class="lbl-s" x="755" y="121">ports</text>
+  <text class="lbl" x="440" y="194">Security Hub</text>
+</svg>
+<figcaption>Terraform-defined · gates run pre- and post-deploy · every finding lands in one place</figcaption>
+</figure>
           <ul class="facts">
             <li>Security testing <b>2–3 days → ~35 min</b></li>
             <li><b>75%</b> fewer security incidents</li>
