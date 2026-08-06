@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devashish Chand Gupta — Lead DevOps Engineer</title>
+<meta name="description" content="Lead DevOps Engineer building GPU/MLOps platforms, security governance and cloud cost control for AI products on AWS.">
+<meta property="og:title" content="Devashish Chand Gupta — Lead DevOps Engineer">
+<meta property="og:description" content="I build the platform underneath AI products — and own what it costs, whether it stays up, and who can reach it.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1526;
+  --ink-soft:#4A4160;
+  --ink-faint:#7B7191;
+  --paper:#FBFAFE;
+  --panel:#F3EFFA;
+  --violet:#6D28D9;
+  --violet-deep:#3B0F79;
+  --credit:#0E7C66;
+  --rule:#E2DAF0;
+  --maxw:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,250,254,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:13px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  letter-spacing:.02em;text-decoration:none}
+.brand span{color:var(--violet)}
+.nav-links{display:flex;gap:0;font-family:'IBM Plex Mono',monospace;font-size:12.5px}
+.nav-links a{color:var(--ink-soft);text-decoration:none;padding:3px 0;margin-left:22px;border-bottom:1px solid transparent}
+.nav-links a:first-child{margin-left:0}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--violet);border-bottom-color:var(--violet)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* ---------- section furniture ---------- */
+section{padding:76px 0;border-bottom:1px solid var(--rule)}
+.label{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--violet);
+  display:flex;align-items:center;gap:12px;margin-bottom:26px;
+}
+.label::after{content:"";flex:1;height:1px;background:var(--rule)}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:clamp(26px,3.4vw,36px);line-height:1.12;letter-spacing:-.02em;margin-bottom:14px}
+h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em}
+p{color:var(--ink-soft);max-width:66ch}
+
+/* ---------- hero ---------- */
+.hero{padding:88px 0 70px;border-bottom:1px solid var(--rule)}
+.hero h1{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:clamp(38px,6.6vw,72px);line-height:.98;letter-spacing:-.035em;
+  margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--violet)}
+.lede{font-size:clamp(17px,1.9vw,20px);line-height:1.5;max-width:38ch;color:var(--ink-soft)}
+.hero-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;
+}
+.hero-meta b{color:var(--ink);font-weight:500}
+
+/* ---------- SIGNATURE: delta ledger ---------- */
+.ledger{
+  margin-top:48px;border:1px solid var(--rule);border-radius:3px;
+  background:#fff;overflow:hidden;
+}
+.ledger-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:13px 20px;background:var(--panel);border-bottom:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--violet-deep);
+}
+.ledger-head .note{letter-spacing:.04em;text-transform:none;font-weight:400;color:var(--ink-faint)}
+.row{
+  display:grid;grid-template-columns:1.5fr auto auto auto;
+  align-items:baseline;gap:8px 18px;
+  padding:17px 20px;border-bottom:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:14.5px;
+}
+@media (prefers-reduced-motion: no-preference){
+  .row{animation:rise .55s cubic-bezier(.2,.6,.2,1) both}
+  .row:nth-child(2){animation-delay:.06s}
+  .row:nth-child(3){animation-delay:.17s}
+  .row:nth-child(4){animation-delay:.28s}
+  .row:nth-child(5){animation-delay:.39s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.row:last-child{border-bottom:0}
+.row .what{font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--ink-soft)}
+.row .from{color:var(--ink-faint);text-decoration:line-through;text-decoration-thickness:1px}
+.row .arrow{color:#B9A8D8}
+.row .to{color:var(--ink);font-weight:600}
+.row .delta{
+  justify-self:end;color:var(--credit);font-weight:600;font-size:13px;
+  white-space:nowrap;
+}
+@media(max-width:640px){
+  .row{grid-template-columns:1fr auto;row-gap:4px}
+  .row .what{grid-column:1/-1}
+  .row .arrow{display:none}
+  .row .from::after{content:" →";text-decoration:none;display:inline-block;padding-left:4px}
+}
+
+/* ---------- owns ---------- */
+.owns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.own{background:var(--paper);padding:22px 20px}
+.own .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(20px,2.1vw,25px);
+  letter-spacing:-.02em;display:block;margin-bottom:5px}
+.own .t{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+  line-height:1.45;display:block}
+
+/* ---------- work ---------- */
+.work{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.case{background:var(--paper);padding:30px 26px;display:grid;
+  grid-template-columns:130px 1fr;gap:26px}
+.case:hover{background:#fff}
+.case .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--violet);padding-top:5px}
+.case p{margin-top:9px;font-size:15px}
+.facts{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+.facts li{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:4px 9px}
+.facts li b{color:var(--violet-deep);font-weight:600}
+@media(max-width:700px){.case{grid-template-columns:1fr;gap:10px}.case .tag{padding-top:0}}
+
+/* ---------- track ---------- */
+.role{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:22px 0;
+  border-bottom:1px solid var(--rule)}
+.role:last-child{border-bottom:0}
+.role .when{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);
+  padding-top:4px;line-height:1.7}
+.role .org{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--violet);
+  margin-bottom:3px}
+.role p{font-size:14.5px;margin-top:7px}
+.award{font-size:13px;color:var(--ink-faint);margin-top:8px;font-style:italic}
+@media(max-width:700px){.role{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- stack ---------- */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+.stack h4{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:9px}
+.stack p{font-size:14px;line-height:1.75}
+
+/* ---------- contact ---------- */
+.contact{padding:76px 0 60px;border-bottom:0}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.links a{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;
+  padding:11px 17px;border:1px solid var(--ink);border-radius:2px;
+  transition:background .18s ease,color .18s ease;
+}
+.links a:hover,.links a:focus-visible{background:var(--ink);color:var(--paper)}
+.links a.primary{background:var(--violet);border-color:var(--violet);color:#fff}
+.links a.primary:hover,.links a.primary:focus-visible{background:var(--violet-deep);border-color:var(--violet-deep)}
+footer{padding:26px 0 44px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:2px}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">dcg<span>mechanics</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#track">Track</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>I build the platform<br>underneath <em>AI products</em>.</h1>
+    <p class="lede">And I own what it costs, whether it stays up, and who can reach it.</p>
+    <div class="hero-meta">
+      <span><b>Devashish Chand Gupta</b></span>
+      <span aria-hidden="true">·</span>
+      <span>Lead DevOps Engineer, Spyne AI</span>
+      <span aria-hidden="true">·</span>
+      <span>Gurugram, India</span>
+      <span aria-hidden="true">·</span>
+      <span>5 years</span>
+    </div>
+
+    <!-- SIGNATURE: the delta ledger -->
+    <div class="ledger" aria-label="Measured before and after results">
+      <div class="ledger-head">
+        <span>Delta ledger</span>
+        <span class="note">measured, not estimated</span>
+      </div>
+      <div class="row"><span class="what">GPU inference — cost per image</span><span class="from">always-on fleet</span><span class="arrow">→</span><span class="to">serverless batch</span><span class="delta">93% lower</span></div>
+      <div class="row"><span class="what">Image pipeline — time per image</span><span class="from">3.00s</span><span class="arrow">→</span><span class="to">1.20s</span><span class="delta">2.5× faster</span></div>
+      <div class="row"><span class="what">Production incidents — monthly volume</span><span class="from">~185</span><span class="arrow">→</span><span class="to">~29</span><span class="delta">85% lower</span></div>
+      <div class="row"><span class="what">Cloud spend — month-over-month growth</span><span class="from">+8–10% / mo</span><span class="arrow">→</span><span class="to">+0.9% / mo</span><span class="delta">curve flattened</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="now">
+  <div class="wrap">
+    <div class="label">What I own today</div>
+    <h2>A platform serving over a million AI-processed images a month.</h2>
+    <p>I report to the CTO and lead three functions at Spyne AI — DevOps, InfoSec and Data Engineering — covering cloud architecture, the GPU and MLOps platform, security governance, cloud economics, and incident command. I joined as an engineer and was promoted to Lead in ten months, after rebuilding how the function operated rather than just what it shipped.</p>
+    <div class="owns" style="margin-top:34px">
+      <div class="own"><span class="n">Seven figures</span><span class="t">annual AWS estate under my ownership</span></div>
+      <div class="own"><span class="n">3 functions</span><span class="t">DevOps, InfoSec and Data Engineering — I proposed two of them</span></div>
+      <div class="own"><span class="n">3 platforms</span><span class="t">greenfield GPU-batch inference systems, built from zero</span></div>
+      <div class="own"><span class="n">ISO 27001</span><span class="t">plus SOC 2 and GDPR — programme driven end to end</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="label">Selected work</div>
+    <h2>Five things I'd want to be judged on.</h2>
+
+    <div class="work" style="margin-top:34px">
+
+      <article class="case">
+        <div class="tag">Platform</div>
+        <div>
+          <h3>Serverless GPU inference at a million images a month</h3>
+          <p>Three greenfield platforms — image, 3D and AutoQC — on one event-driven backbone: SQS into an EventBridge Pipe, into Step Functions, into AWS Batch across Fargate CPU and EC2 GPU. Each is its own Terraform monorepo with per-AZ workspace isolation, a three-pool L4/L40S GPU topology, Triton inference sidecars, and an SSM-backed AMI registry that turns a GPU image roll into a two-parameter change. It replaced an always-on GPU fleet.</p>
+          <ul class="facts">
+            <li><b>93%</b> cheaper per image than the fleet it replaced</li>
+            <li><b>6,669</b> images/hr sustained</li>
+            <li><b>216K</b> images delivered in 24h</li>
+            <li>5-way parallel GPU fan-out</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="tag">Security</div>
+        <div>
+          <h3>Shipping edge controls without breaking production</h3>
+          <p>Authentication controls at the edge, on the WAF in front of our public load balancer. I rolled them out the careful way — running the rule in observation mode across a quarter of a million real requests and reading the results before enforcing anything, which is how I caught a legacy dependency a straight cutover would have broken. Alongside it, Project Shield ended shadow IT by moving internal and agentic applications onto governed, Terraform-only AWS with business-unit segregation.</p>
+          <ul class="facts">
+            <li><b>242K</b> requests analysed before enforcing</li>
+            <li><b>Zero</b> production impact at rollout</li>
+            <li>Multi-account Identity Center as code</li>
+            <li>Foundation for SOC 2 and GDPR</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="tag">Reliability</div>
+        <div>
+          <h3>From firefighting to an operating model</h3>
+          <p>The function was absorbing four to five incidents a day — a support queue, not a platform team. I rebuilt the function around on-call rotations with per-team schedule sync, real RCA discipline, branch protection and merge governance, a deployment freeze policy, and golden-path deployment docs. Then I automated the lifecycle: a PagerDuty to Jira to Slack pipeline with fingerprint deduplication, a reopen window, and automatic RCA ticketing.</p>
+          <ul class="facts">
+            <li>Monthly incident volume <b>down ~85%</b></li>
+            <li>Recovered a <b>14-hour</b> EKS outage, all 43 models</li>
+            <li>Global Accelerator failover during the Cloudflare outage</li>
+            <li>~1,400 LOC, 62+ tests</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="tag">Cloud economics</div>
+        <div>
+          <h3>Making the bill stop growing</h3>
+          <p>Spend had been climbing by a double-digit percentage every single month. Rather than trimming line items, I went after the structure: retired a GPU service outright, downsized GPU tiers while holding throughput, killed a 35-million-message queue pendency loop before it reached the invoice, and co-located hot-path storage in a single AZ to remove cross-AZ transfer entirely. I also negotiated commercial credit directly with AWS alongside our finance team.</p>
+          <ul class="facts">
+            <li>Growth curve <b>flattened to +0.9%</b></li>
+            <li>Commercial credit negotiated with <b>AWS</b></li>
+            <li>Per-batch and per-image cost <b>instrumented</b></li>
+            <li>Built the cost dashboard the org now runs on</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="tag">Governance</div>
+        <div>
+          <h3>Quality gates across an entire GitHub org</h3>
+          <p>I audited all 179 repositories in the org and rolled a shared CI workflow — tests, coverage and static analysis — into every one where it genuinely applied, documenting why each exclusion was an exclusion rather than quietly skipping it. Paired with a GitHub App I wrote that blocks any pull request without a valid Jira link, and declarative org-wide team permissions.</p>
+          <ul class="facts">
+            <li><b>179</b> repositories audited</li>
+            <li><b>110</b> projects under quality gates</li>
+            <li>Custom Node.js GitHub App</li>
+            <li>Rulesets and RBAC as config</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="track">
+  <div class="wrap">
+    <div class="label">Track</div>
+    <h2>Five years, three companies, one direction.</h2>
+
+    <div style="margin-top:30px">
+      <div class="role">
+        <div class="when">Apr 2026 — present<br>May 2025 — Mar 2026</div>
+        <div>
+          <div class="org">Spyne AI · Gurugram</div>
+          <h3>Lead DevOps Engineer<br>DevOps Engineer II</h3>
+          <p>Report to the CTO, leading DevOps, InfoSec and Data Engineering. Own the cloud platform, GPU/MLOps infrastructure, security, cloud economics and incident command for an AI product suite. Promoted to Lead in ten months. Created and hired two net-new engineering functions — AI InfoSec and Data Engineering — after making the case that security and data had outgrown a DevOps-managed model.</p>
+          <div class="award">Code Commander Award, 2025 — architectural ownership and rapid restoration during critical outages.</div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="when">Sep 2024 — May 2025<br>Mar 2024 — Aug 2024</div>
+        <div>
+          <div class="org">SMC Global Securities · New Delhi</div>
+          <h3>Member of Technical Staff II<br>Senior Software Engineer, Cloud &amp; DevOps</h3>
+          <p>Led the migration of on-premises data centres to AWS in a SEBI-regulated environment. Took infrastructure-as-code coverage to 97%, built shift-left security gates into the delivery pipeline, and implemented CloudHSM for bring-your-own-key compliance.</p>
+          <div class="award">Architects of Innovation Award, 2024 — for the on-premises to cloud transformation.</div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="when">Apr 2022 — Mar 2024<br>Jun 2021 — Apr 2022</div>
+        <div>
+          <div class="org">CodeLogicX Technologies · Kolkata</div>
+          <h3>DevOps Engineer<br>Jr. DevOps Engineer</h3>
+          <p>Built the CI/CD foundation that took deployment frequency up eightfold, provisioned and secured the core AWS estate, and ran vulnerability management and endpoint security across the organisation.</p>
+          <div class="award">Rising Star Award, 2023 — for automation and infrastructure excellence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="label">Stack</div>
+    <h2>What I reach for.</h2>
+    <div class="stack" style="margin-top:32px">
+      <div>
+        <h4>Cloud &amp; compute</h4>
+        <p>AWS at depth — EKS, ECS/Fargate, Batch, Step Functions, EventBridge, Lambda, MSK, RDS and Aurora, Global Accelerator, Control Tower, IAM Identity Center. GCP and Azure where the work goes there. Multi-region warm-standby DR.</p>
+      </div>
+      <div>
+        <h4>GPU &amp; MLOps</h4>
+        <p>NVIDIA Triton, KServe ModelMesh, Karpenter with fractional GPU and spot, L4 and L40S pool topologies, SageMaker, ONNX, SSM-backed AMI registries.</p>
+      </div>
+      <div>
+        <h4>Infrastructure as code</h4>
+        <p>Terraform and Terragrunt as the default, CloudFormation where it's already there, Ansible and Packer for image work. Python, Bash and Node.js for the glue — including GitHub Apps written from scratch.</p>
+      </div>
+      <div>
+        <h4>Delivery</h4>
+        <p>AWS CodePipeline, Jenkins shared libraries, GitHub Actions, SonarQube quality gates, org rulesets and branch protection, golden-path deployment documentation.</p>
+      </div>
+      <div>
+        <h4>Observability &amp; data</h4>
+        <p>The LGTM stack, CubeAPM, Prometheus, PagerDuty. MongoDB Atlas, RDS MySQL, Redis, Kafka and Debezium, ClickHouse, Elasticsearch.</p>
+      </div>
+      <div>
+        <h4>Security</h4>
+        <p>AWS WAF, GuardDuty, Secrets Manager, CloudHSM, least-privilege IAM, CloudFront OAC. SAST, DAST and container scanning in the pipeline. ISO 27001:2022, SOC 2, GDPR, SEBI BYOK.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>Open to Lead and Head-of-Platform roles.</h2>
+    <p>Happy to talk about GPU platform economics, incident culture, or why your cloud bill grows every month. Based in Gurugram, open to relocating.</p>
+    <div class="links">
+      <a class="primary" href="mailto:devashishchandgupta@gmail.com">Email me</a>
+      <a href="https://www.linkedin.com/in/dcgmechanics/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/dcgmechanics" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://dcgmechanics.medium.com" target="_blank" rel="noopener">Writing</a>
+      <a href="resume.pdf">Résumé (PDF)</a>
+    </div>
+    <footer>
+      <span>Devashish Chand Gupta — Lead DevOps Engineer</span>
+      <span>There is no place like 127.0.0.1</span>
+    </footer>
+  </div>
+</section>
+
+</body>
+</html>
