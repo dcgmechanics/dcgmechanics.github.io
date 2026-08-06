@@ -155,6 +155,8 @@ p{color:var(--ink-soft);max-width:66ch}
 .facts li{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
   background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:4px 9px}
 .facts li b{color:var(--violet-deep);font-weight:600}
+.facts li a.readlink{color:var(--violet);text-decoration:none;font-weight:600}
+.facts li a.readlink:hover,.facts li a.readlink:focus-visible{text-decoration:underline}
 @media(max-width:700px){.case{grid-template-columns:1fr;gap:10px}.case .tag{padding-top:0}}
 
 /* ---------- track ---------- */
@@ -164,7 +166,10 @@ p{color:var(--ink-soft);max-width:66ch}
 .role .when{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);
   padding-top:4px;line-height:1.7}
 .role .org{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--violet);
-  margin-bottom:3px}
+  margin-bottom:5px}
+.role h3{margin-bottom:2px}
+.role .rdate{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:400;
+  color:var(--ink-faint);letter-spacing:0;white-space:nowrap;margin-left:6px}
 .role p{font-size:14.5px;margin-top:7px}
 .award{font-size:13px;color:var(--ink-faint);margin-top:8px;font-style:italic}
 @media(max-width:700px){.role{grid-template-columns:1fr;gap:6px}}
@@ -189,6 +194,41 @@ p{color:var(--ink-soft);max-width:66ch}
 footer{padding:26px 0 44px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
+
+/* ---------- pipeline figure ---------- */
+.pipe{margin:20px 0 4px;padding:18px 16px 12px;background:#fff;border:1px solid var(--rule);border-radius:3px}
+.pipe svg{width:100%;height:auto;display:block}
+.pipe figcaption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+  margin-top:10px;text-align:center}
+.pipe .node{fill:var(--panel);stroke:var(--rule);stroke-width:1}
+.pipe .lane{fill:#fff;stroke:var(--violet);stroke-width:1;opacity:.9}
+.pipe .lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;fill:var(--ink);text-anchor:middle}
+.pipe .lbl-s{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--violet);text-anchor:middle}
+.pipe .flow path{stroke-dasharray:3 9;stroke-linecap:round}
+@media (prefers-reduced-motion: no-preference){
+  .pipe .flow path{animation:dash 2.4s linear infinite}
+  .pipe .lane{animation:lanepulse 2.4s ease-in-out infinite}
+  .pipe .lane:nth-of-type(1){animation-delay:0s}
+  .pipe .lane:nth-of-type(2){animation-delay:.12s}
+  .pipe .lane:nth-of-type(3){animation-delay:.24s}
+  .pipe .lane:nth-of-type(4){animation-delay:.36s}
+  .pipe .lane:nth-of-type(5){animation-delay:.48s}
+}
+@keyframes dash{to{stroke-dashoffset:-48}}
+@keyframes lanepulse{0%,100%{fill:#fff}50%{fill:var(--panel)}}
+
+/* ---------- recognition ---------- */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:32px}
+.q{background:var(--paper);padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.q blockquote{font-size:15px;line-height:1.55;color:var(--ink);margin:0 0 16px}
+.q .who{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);line-height:1.6}
+.q .who b{display:block;color:var(--violet);font-weight:600;font-size:12.5px}
+.awards{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.awards li{list-style:none;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:8px 13px}
+.awards li b{color:var(--violet-deep);font-weight:600}
+
 a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:2px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -202,6 +242,7 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
     <a class="brand" href="#top">dcg<span>mechanics</span></a>
     <div class="nav-links">
       <a href="#work">Work</a>
+      <a href="#recognition">Recognition</a>
       <a href="#track">Track</a>
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
@@ -254,7 +295,7 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 <section id="work">
   <div class="wrap">
     <div class="label">Selected work</div>
-    <h2>Five things I'd want to be judged on.</h2>
+    <h2>Six things I'd want to be judged on.</h2>
 
     <div class="work" style="margin-top:34px">
 
@@ -263,6 +304,25 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div>
           <h3>Serverless GPU inference at a million images a month</h3>
           <p>Three greenfield platforms — image, 3D and AutoQC — on one event-driven backbone: SQS into an EventBridge Pipe, into Step Functions, into AWS Batch across Fargate CPU and EC2 GPU. Each is its own Terraform monorepo with per-AZ workspace isolation, a three-pool L4/L40S GPU topology, Triton inference sidecars, and an SSM-backed AMI registry that turns a GPU image roll into a two-parameter change. It replaced an always-on GPU fleet.</p>
+          <figure class="pipe">
+<svg viewBox="0 0 880 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Job flow: SQS into an EventBridge Pipe into Step Functions, fanning out across five parallel GPU lanes on AWS Batch, converging into S3.">
+  <g class="flow" fill="none" stroke="var(--violet)" stroke-width="1.6">
+    <path d="M112 105 H152"/><path d="M276 105 H316"/><path d="M434 105 C468 105 478 33 520 33"/><path d="M434 105 C468 105 478 69 520 69"/><path d="M434 105 H520"/><path d="M434 105 C468 105 478 141 520 141"/><path d="M434 105 C468 105 478 177 520 177"/><path d="M616 33 C658 33 668 105 692 105"/><path d="M616 69 C658 69 668 105 692 105"/><path d="M616 105 H692"/><path d="M616 141 C658 141 668 105 692 105"/><path d="M616 177 C658 177 668 105 692 105"/>
+  </g>
+  <rect class="lane" x="520" y="21" width="96" height="24" rx="3"/><rect class="lane" x="520" y="57" width="96" height="24" rx="3"/><rect class="lane" x="520" y="93" width="96" height="24" rx="3"/><rect class="lane" x="520" y="129" width="96" height="24" rx="3"/><rect class="lane" x="520" y="165" width="96" height="24" rx="3"/>
+  <rect class="node" x="8" y="85" width="104" height="40" rx="3"/>
+  <rect class="node" x="152" y="85" width="124" height="40" rx="3"/>
+  <rect class="node" x="316" y="85" width="118" height="40" rx="3"/>
+  <rect class="node" x="692" y="85" width="96" height="40" rx="3"/>
+  <text class="lbl" x="60" y="110">SQS</text>
+  <text class="lbl" x="214" y="110">EventBridge</text>
+  <text class="lbl" x="375" y="110">Step Fns</text>
+  <text class="lbl" x="740" y="110">S3</text>
+  <text class="lbl-s" x="568" y="37">gpu job</text><text class="lbl-s" x="568" y="73">gpu job</text><text class="lbl-s" x="568" y="109">gpu job</text><text class="lbl-s" x="568" y="145">gpu job</text><text class="lbl-s" x="568" y="181">gpu job</text>
+  <text class="lbl-s" x="568" y="203">AWS Batch</text>
+</svg>
+<figcaption>5-way parallel GPU fan-out · 3-pool L4 / L40S topology · scale-to-zero between batches</figcaption>
+</figure>
           <ul class="facts">
             <li><b>93%</b> cheaper per image than the fleet it replaced</li>
             <li><b>6,669</b> images/hr sustained</li>
@@ -304,10 +364,10 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Cloud economics</div>
         <div>
           <h3>Making the bill stop growing</h3>
-          <p>Spend had been climbing by a double-digit percentage every single month. Rather than trimming line items, I went after the structure: retired a GPU service outright, downsized GPU tiers while holding throughput, killed a 35-million-message queue pendency loop before it reached the invoice, and co-located hot-path storage in a single AZ to remove cross-AZ transfer entirely. I also negotiated commercial credit directly with AWS alongside our finance team.</p>
+          <p>Spend had been climbing by a double-digit percentage every single month. Rather than trimming line items, I went after the structure: retired a GPU service outright, downsized GPU tiers while holding throughput, killed a 35-million-message queue pendency loop before it reached the invoice, and co-located hot-path storage in a single AZ to remove cross-AZ transfer entirely. I also helped build the infrastructure and usage case behind a seven-figure AWS Enterprise Discount Program commitment, negotiated with CloudKeeper alongside our finance team and CTO.</p>
           <ul class="facts">
             <li>Growth curve <b>flattened to +0.9%</b></li>
-            <li>Commercial credit negotiated with <b>AWS</b></li>
+            <li><b>AWS EDP</b> commitment, via CloudKeeper</li>
             <li>Per-batch and per-image cost <b>instrumented</b></li>
             <li>Built the cost dashboard the org now runs on</li>
           </ul>
@@ -328,7 +388,50 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         </div>
       </article>
 
+      <article class="case">
+        <div class="tag">Regulated FinTech</div>
+        <div>
+          <h3>Shift-left security, published</h3>
+          <p>At SMC Global Securities — a SEBI-regulated broking platform — I helped build an in-house DevSecOps pipeline inside AWS CodePipeline, defined end to end in Terraform: dependency scanning, static analysis, secret detection, container scanning, dynamic testing against the running application and port scanning, with every finding aggregated into Security Hub. It replaced a process where security review happened after QA, by which point fixes were expensive and releases were already late. The engineering write-up was published on SMC's tech blog, co-authored with the CPTO and the Director of Cloud Engineering.</p>
+          <ul class="facts">
+            <li>Security testing <b>2–3 days → ~35 min</b></li>
+            <li><b>75%</b> fewer security incidents</li>
+            <li>Terraform-defined pipeline, open-source tooling</li>
+            <li><a class="readlink" href="https://medium.com/@smctechblogs/enhancing-security-implementing-shift-left-strategies-for-aws-native-ci-cd-pipeline-with-open-ea1e6785b255" target="_blank" rel="noopener">Read the write-up &rarr;</a></li>
+          </ul>
+        </div>
+      </article>
+
     </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="wrap">
+    <div class="label">Recognition</div>
+    <h2>What the people I've worked with say.</h2>
+
+    <div class="quotes">
+      <div class="q">
+        <blockquote>&ldquo;One of the most capable and dependable engineers I've worked with &mdash; a go-to resource for cross-functional teams needing clarity or support.&rdquo;</blockquote>
+        <div class="who"><b>Vishal Kumar Jaiswal</b>Delivery Manager &middot; managed me directly</div>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;The go-to person when it comes to new cloud technology. Exceptionally well informed, and a saviour in times of production-level crisis.&rdquo;</blockquote>
+        <div class="who"><b>Ankan Das</b>Cloud Engineer &middot; worked on my team</div>
+      </div>
+      <div class="q">
+        <blockquote>&ldquo;Their mentorship helped elevate the skills of our junior engineers, making the team stronger and more cohesive.&rdquo;</blockquote>
+        <div class="who"><b>Shahid Ali</b>Senior Software Engineer &middot; worked on my team</div>
+      </div>
+    </div>
+
+    <ul class="awards">
+      <li><b>Published</b> &middot; co-author, SMC TechLab engineering blog, 2024</li>
+      <li><b>Code Commander Award</b> &middot; Spyne AI, 2025</li>
+      <li><b>Architects of Innovation</b> &middot; SMC Global, 2024</li>
+      <li><b>Rising Star Award</b> &middot; CodeLogicX, 2023</li>
+    </ul>
   </div>
 </section>
 
@@ -339,30 +442,33 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 
     <div style="margin-top:30px">
       <div class="role">
-        <div class="when">Apr 2026 — present<br>May 2025 — Mar 2026</div>
+        <div class="when">May 2025 — present</div>
         <div>
           <div class="org">Spyne AI · Gurugram</div>
-          <h3>Lead DevOps Engineer<br>DevOps Engineer II</h3>
+          <h3>Lead DevOps Engineer <span class="rdate">Apr 2026 — present</span></h3>
+          <h3>DevOps Engineer II <span class="rdate">May 2025 — Mar 2026</span></h3>
           <p>Report to the CTO, leading DevOps, InfoSec and Data Engineering. Own the cloud platform, GPU/MLOps infrastructure, security, cloud economics and incident command for an AI product suite. Promoted to Lead in ten months. Created and hired two net-new engineering functions — AI InfoSec and Data Engineering — after making the case that security and data had outgrown a DevOps-managed model.</p>
           <div class="award">Code Commander Award, 2025 — architectural ownership and rapid restoration during critical outages.</div>
         </div>
       </div>
 
       <div class="role">
-        <div class="when">Sep 2024 — May 2025<br>Mar 2024 — Aug 2024</div>
+        <div class="when">Mar 2024 — May 2025</div>
         <div>
           <div class="org">SMC Global Securities · New Delhi</div>
-          <h3>Member of Technical Staff II<br>Senior Software Engineer, Cloud &amp; DevOps</h3>
-          <p>Led the migration of on-premises data centres to AWS in a SEBI-regulated environment. Took infrastructure-as-code coverage to 97%, built shift-left security gates into the delivery pipeline, and implemented CloudHSM for bring-your-own-key compliance.</p>
+          <h3>Member of Technical Staff II <span class="rdate">Sep 2024 — May 2025</span></h3>
+          <h3>Senior Software Engineer, Cloud &amp; DevOps <span class="rdate">Mar 2024 — Aug 2024</span></h3>
+          <p>Led the migration of on-premises data centres to AWS in a SEBI-regulated environment, working alongside Motherson Technology Services as cloud partner. Took infrastructure-as-code coverage to 97%, built shift-left security gates into the delivery pipeline, and implemented CloudHSM for bring-your-own-key compliance.</p>
           <div class="award">Architects of Innovation Award, 2024 — for the on-premises to cloud transformation.</div>
         </div>
       </div>
 
       <div class="role">
-        <div class="when">Apr 2022 — Mar 2024<br>Jun 2021 — Apr 2022</div>
+        <div class="when">Jun 2021 — Mar 2024</div>
         <div>
           <div class="org">CodeLogicX Technologies · Kolkata</div>
-          <h3>DevOps Engineer<br>Jr. DevOps Engineer</h3>
+          <h3>DevOps Engineer <span class="rdate">Apr 2022 — Mar 2024</span></h3>
+          <h3>Jr. DevOps Engineer <span class="rdate">Jun 2021 — Apr 2022</span></h3>
           <p>Built the CI/CD foundation that took deployment frequency up eightfold, provisioned and secured the core AWS estate, and ran vulnerability management and endpoint security across the organisation.</p>
           <div class="award">Rising Star Award, 2023 — for automation and infrastructure excellence.</div>
         </div>
