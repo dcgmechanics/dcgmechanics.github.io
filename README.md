@@ -1,5 +1,7 @@
 # dcgmechanics.github.io
 
+[![Devashish Chand Gupta — Lead DevOps Engineer](og.png)](https://dcgmechanics.github.io)
+
 Personal site — Devashish Chand Gupta, Lead DevOps Engineer.
 Live at **https://dcgmechanics.github.io**
 
@@ -13,7 +15,18 @@ self-contained.
 |---|---|
 | `index.html` | The entire site |
 | `resume.pdf` | Linked from the Contact section — **the filename is hardcoded, don't rename it** |
+| `og.png` | Link-preview card (1200×630) for LinkedIn, Slack, X, iMessage |
 | `.nojekyll` | Tells Pages to skip the Jekyll build |
+
+## Link previews
+
+`index.html` carries Open Graph and Twitter Card tags pointing at `og.png`.
+Two things to know if you ever change them:
+
+- `og:image` must be an **absolute** URL. A relative path is silently ignored.
+- LinkedIn caches previews for about a week. After changing the image or the
+  tags, run the URL through **linkedin.com/post-inspector** to force a re-scrape,
+  then remove and re-add any Featured entry pointing at it.
 
 ## Publishing
 
