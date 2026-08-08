@@ -56,11 +56,16 @@ a{color:inherit}
   display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
   letter-spacing:.02em;text-decoration:none}
-.brand span{color:var(--violet)}
+.brand .v{color:var(--violet)}
+.brand{display:inline-flex;align-items:center;gap:7px}
+.brand .mark{display:inline-grid;place-items:center;width:20px;height:20px;
+  background:var(--violet);color:#fff;border-radius:3px;font-size:11px;font-weight:600;
+  line-height:1;padding-bottom:1px}
 .nav-links{display:flex;gap:0;font-family:'IBM Plex Mono',monospace;font-size:12.5px}
 .nav-links a{color:var(--ink-soft);text-decoration:none;padding:3px 0;margin-left:22px;border-bottom:1px solid transparent}
 .nav-links a:first-child{margin-left:0}
-.nav-links a:hover,.nav-links a:focus-visible{color:var(--violet);border-bottom-color:var(--violet)}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--violet)}
+.nav-links a.active{color:var(--violet);border-bottom-color:var(--violet);font-weight:600}
 @media(max-width:720px){.nav-links{display:none}}
 
 /* ---------- section furniture ---------- */
@@ -73,21 +78,23 @@ section{padding:76px 0;border-bottom:1px solid var(--rule)}
 .label::after{content:"";flex:1;height:1px;background:var(--rule)}
 h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
   font-size:clamp(26px,3.4vw,36px);line-height:1.12;letter-spacing:-.02em;margin-bottom:14px}
-h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em}
-p{color:var(--ink-soft);max-width:66ch}
+h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21.5px;
+  letter-spacing:-.004em;line-height:1.25}
+p{color:var(--ink-soft);max-width:76ch}
 
 /* ---------- hero ---------- */
 .hero{padding:88px 0 70px;border-bottom:1px solid var(--rule)}
 .hero h1{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
-  font-size:clamp(38px,6.6vw,72px);line-height:.98;letter-spacing:-.035em;
+  font-size:clamp(38px,6.6vw,72px);line-height:1.0;letter-spacing:-.028em;
   margin-bottom:20px;
 }
 .hero h1 em{font-style:normal;color:var(--violet)}
 .lede{font-size:clamp(17px,1.9vw,20px);line-height:1.5;max-width:38ch;color:var(--ink-soft)}
 .hero-meta{
+  margin-bottom:26px;
   font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-faint);
-  margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;
+  display:flex;flex-wrap:wrap;gap:8px 18px;
 }
 .hero-meta b{color:var(--ink);font-weight:500}
 
@@ -104,7 +111,7 @@ p{color:var(--ink-soft);max-width:66ch}
 }
 .ledger-head .note{letter-spacing:.04em;text-transform:none;font-weight:400;color:var(--ink-faint)}
 .row{
-  display:grid;grid-template-columns:1.5fr auto auto auto;
+  display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;
   align-items:baseline;gap:8px 18px;
   padding:17px 20px;border-bottom:1px solid var(--rule);
   font-family:'IBM Plex Mono',monospace;font-size:14.5px;
@@ -123,14 +130,15 @@ p{color:var(--ink-soft);max-width:66ch}
 .row .arrow{color:#B9A8D8}
 .row .to{color:var(--ink);font-weight:600}
 .row .delta{
-  justify-self:end;color:var(--credit);font-weight:600;font-size:13px;
-  white-space:nowrap;
+  grid-column:1/-1;justify-self:end;margin-top:6px;
+  color:var(--credit);font-weight:600;font-size:15px;
+  white-space:nowrap;letter-spacing:-.01em;
 }
+.row .to{font-size:15.5px}
 @media(max-width:640px){
-  .row{grid-template-columns:1fr auto;row-gap:4px}
-  .row .what{grid-column:1/-1}
-  .row .arrow{display:none}
-  .row .from::after{content:" →";text-decoration:none;display:inline-block;padding-left:4px}
+  .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 9px}
+  .row .what{flex:0 0 100%}
+  .row .delta{flex:0 0 100%;text-align:right;margin-top:2px}
 }
 
 /* ---------- owns ---------- */
@@ -150,8 +158,8 @@ p{color:var(--ink-soft);max-width:66ch}
 .case:hover{background:#fff}
 .case .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;color:var(--violet);padding-top:5px}
-.case p{margin-top:9px;font-size:15px}
-.facts{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+.case p{margin-top:14px;font-size:15px;max-width:78ch}
+.facts{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;max-width:78ch}
 .facts li{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
   background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:4px 9px}
 .facts li b{color:var(--violet-deep);font-weight:600}
@@ -176,8 +184,8 @@ p{color:var(--ink-soft);max-width:66ch}
 
 /* ---------- stack ---------- */
 .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
-.stack h4{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:9px}
+.stack h4{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
 .stack p{font-size:14px;line-height:1.75}
 
 /* ---------- contact ---------- */
@@ -220,12 +228,12 @@ footer{padding:26px 0 44px;font-family:'IBM Plex Mono',monospace;font-size:11.5p
 
 /* ---------- recognition ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
-  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:32px}
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:14px}
 .q{background:var(--paper);padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between}
 .q blockquote{font-size:15px;line-height:1.55;color:var(--ink);margin:0 0 16px}
 .q .who{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);line-height:1.6}
 .q .who b{display:block;color:var(--violet);font-weight:600;font-size:12.5px}
-.awards{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.awards{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .awards li{list-style:none;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
   background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:8px 13px}
 .awards li b{color:var(--violet-deep);font-weight:600}
@@ -240,7 +248,7 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 
 <nav class="nav">
   <div class="nav-in">
-    <a class="brand" href="#top">dcg<span>mechanics</span></a>
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">Δ</span>dcg<span class="v">mechanics</span></a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#recognition">Recognition</a>
@@ -253,8 +261,7 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>I build the platform<br>underneath <em>AI products</em>.</h1>
-    <p class="lede">And I own what it costs, whether it stays up, and who can reach it.</p>
+
     <div class="hero-meta">
       <span><b>Devashish Chand Gupta</b></span>
       <span aria-hidden="true">·</span>
@@ -264,6 +271,8 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
       <span aria-hidden="true">·</span>
       <span>5 years</span>
     </div>
+    <h1>I build the platform<br>underneath <em>AI products</em>.</h1>
+    <p class="lede">And I own what it costs, whether it stays up, and who can reach it.</p>
 
     <!-- SIGNATURE: the delta ledger -->
     <div class="ledger" aria-label="Measured before and after results">
@@ -304,6 +313,12 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Platform</div>
         <div>
           <h3>Serverless GPU inference at a million images a month</h3>
+          <ul class="facts">
+            <li><b>93%</b> cheaper per image than the fleet it replaced</li>
+            <li><b>6,669</b> images/hr sustained</li>
+            <li><b>216K</b> images delivered in 24h</li>
+            <li>5-way parallel GPU fan-out</li>
+          </ul>
           <p>Three greenfield platforms — image, 3D and AutoQC — on one event-driven backbone: SQS into an EventBridge Pipe, into Step Functions, into AWS Batch across Fargate CPU and EC2 GPU. Each is its own Terraform monorepo with per-AZ workspace isolation, a three-pool L4/L40S GPU topology, Triton inference sidecars, and an SSM-backed AMI registry that turns a GPU image roll into a two-parameter change. It replaced an always-on GPU fleet.</p>
           <figure class="pipe">
 <svg viewBox="0 0 880 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Job flow: SQS into an EventBridge Pipe into Step Functions, fanning out across five parallel GPU lanes on AWS Batch, converging into S3.">
@@ -324,12 +339,6 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 </svg>
 <figcaption>5-way parallel GPU fan-out · 3-pool L4 / L40S topology · scale-to-zero between batches</figcaption>
 </figure>
-          <ul class="facts">
-            <li><b>93%</b> cheaper per image than the fleet it replaced</li>
-            <li><b>6,669</b> images/hr sustained</li>
-            <li><b>216K</b> images delivered in 24h</li>
-            <li>5-way parallel GPU fan-out</li>
-          </ul>
         </div>
       </article>
 
@@ -337,13 +346,13 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Security</div>
         <div>
           <h3>Shipping edge controls without breaking production</h3>
-          <p>Authentication controls at the edge, on the WAF in front of our public load balancer. I rolled them out the careful way — running the rule in observation mode across a quarter of a million real requests and reading the results before enforcing anything, which is how I caught a legacy dependency a straight cutover would have broken. Alongside it, Project Shield ended shadow IT by moving internal and agentic applications onto governed, Terraform-only AWS with business-unit segregation.</p>
           <ul class="facts">
             <li><b>242K</b> requests analysed before enforcing</li>
             <li><b>Zero</b> production impact at rollout</li>
             <li>Multi-account Identity Center as code</li>
             <li>Foundation for SOC 2 and GDPR</li>
           </ul>
+          <p>Authentication controls at the edge, on the WAF in front of our public load balancer. I rolled them out the careful way — running the rule in observation mode across a quarter of a million real requests and reading the results before enforcing anything, which is how I caught a legacy dependency a straight cutover would have broken. Alongside it, Project Shield ended shadow IT by moving internal and agentic applications onto governed, Terraform-only AWS with business-unit segregation.</p>
         </div>
       </article>
 
@@ -351,13 +360,13 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Reliability</div>
         <div>
           <h3>From firefighting to an operating model</h3>
-          <p>The function was absorbing four to five incidents a day — a support queue, not a platform team. I rebuilt the function around on-call rotations with per-team schedule sync, real RCA discipline, branch protection and merge governance, a deployment freeze policy, and golden-path deployment docs. Then I automated the lifecycle: a PagerDuty to Jira to Slack pipeline with fingerprint deduplication, a reopen window, and automatic RCA ticketing.</p>
           <ul class="facts">
             <li>Monthly incident volume <b>down ~85%</b></li>
             <li>Recovered a <b>14-hour</b> EKS outage, all 43 models</li>
             <li>Global Accelerator failover during the Cloudflare outage</li>
             <li>~1,400 LOC, 62+ tests</li>
           </ul>
+          <p>The function was absorbing four to five incidents a day — a support queue, not a platform team. I rebuilt the function around on-call rotations with per-team schedule sync, real RCA discipline, branch protection and merge governance, a deployment freeze policy, and golden-path deployment docs. Then I automated the lifecycle: a PagerDuty to Jira to Slack pipeline with fingerprint deduplication, a reopen window, and automatic RCA ticketing.</p>
         </div>
       </article>
 
@@ -365,13 +374,13 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Cloud economics</div>
         <div>
           <h3>Making the bill stop growing</h3>
-          <p>Spend had been climbing by a double-digit percentage every single month. Rather than trimming line items, I went after the structure: retired a GPU service outright, downsized GPU tiers while holding throughput, killed a 35-million-message queue pendency loop before it reached the invoice, and co-located hot-path storage in a single AZ to remove cross-AZ transfer entirely. I also helped build the infrastructure and usage case behind a seven-figure AWS Enterprise Discount Program commitment, negotiated with CloudKeeper alongside our finance team and CTO.</p>
           <ul class="facts">
             <li>Growth curve <b>flattened to +0.9%</b></li>
             <li><b>AWS EDP</b> commitment, via CloudKeeper</li>
             <li>Per-batch and per-image cost <b>instrumented</b></li>
             <li>Built the cost dashboard the org now runs on</li>
           </ul>
+          <p>Spend had been climbing by a double-digit percentage every single month. Rather than trimming line items, I went after the structure: retired a GPU service outright, downsized GPU tiers while holding throughput, killed a 35-million-message queue pendency loop before it reached the invoice, and co-located hot-path storage in a single AZ to remove cross-AZ transfer entirely. I also helped build the infrastructure and usage case behind a seven-figure AWS Enterprise Discount Program commitment, negotiated with CloudKeeper alongside our finance team and CTO.</p>
         </div>
       </article>
 
@@ -379,13 +388,13 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Governance</div>
         <div>
           <h3>Quality gates across an entire GitHub org</h3>
-          <p>I audited all 179 repositories in the org and rolled a shared CI workflow — tests, coverage and static analysis — into every one where it genuinely applied, documenting why each exclusion was an exclusion rather than quietly skipping it. Paired with a GitHub App I wrote that blocks any pull request without a valid Jira link, and declarative org-wide team permissions.</p>
           <ul class="facts">
             <li><b>179</b> repositories audited</li>
             <li><b>110</b> projects under quality gates</li>
             <li>Custom Node.js GitHub App</li>
             <li>Rulesets and RBAC as config</li>
           </ul>
+          <p>I audited all 179 repositories in the org and rolled a shared CI workflow — tests, coverage and static analysis — into every one where it genuinely applied, documenting why each exclusion was an exclusion rather than quietly skipping it. Paired with a GitHub App I wrote that blocks any pull request without a valid Jira link, and declarative org-wide team permissions.</p>
         </div>
       </article>
 
@@ -393,8 +402,14 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="tag">Regulated FinTech</div>
         <div>
           <h3>Shift-left security, published</h3>
+          <ul class="facts">
+            <li>Security testing <b>2–3 days → ~35 min</b></li>
+            <li><b>75%</b> fewer security incidents</li>
+            <li>Terraform-defined pipeline, open-source tooling</li>
+            <li><a class="readlink" href="https://medium.com/@smctechblogs/enhancing-security-implementing-shift-left-strategies-for-aws-native-ci-cd-pipeline-with-open-ea1e6785b255" target="_blank" rel="noopener">Read the write-up &rarr;</a></li>
+          </ul>
           <p>At SMC Global Securities — a SEBI-regulated broking platform — I helped build an in-house DevSecOps pipeline inside AWS CodePipeline, defined end to end in Terraform: dependency scanning, static analysis, secret detection, container scanning, dynamic testing against the running application and port scanning, with every finding aggregated into Security Hub. It replaced a process where security review happened after QA, by which point fixes were expensive and releases were already late. The engineering write-up was published on SMC's tech blog, co-authored with the CPTO and the Director of Cloud Engineering.</p>
-<figure class="pipe">
+          <figure class="pipe">
 <svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CI/CD pipeline: commit, build, deploy, live — with secrets, SCA, SAST, container, DAST and port-scanning gates feeding findings into AWS Security Hub.">
   <g class="flow" fill="none" stroke="var(--violet)" stroke-width="1.6"><path d="M136 43 H228"/><path d="M344 43 H436"/><path d="M552 43 H644"/><path d="M125 84 H755"/><path d="M78 60 V84"/><path d="M286 60 V84"/><path d="M494 60 V84"/><path d="M702 60 V84"/><path d="M125 84 V104"/><path d="M251 84 V104"/><path d="M377 84 V104"/><path d="M503 84 V104"/><path d="M629 84 V104"/><path d="M755 84 V104"/><path d="M125 130 C125 158 440 152 440 174"/><path d="M251 130 C251 158 440 152 440 174"/><path d="M377 130 C377 158 440 152 440 174"/><path d="M503 130 C503 158 440 152 440 174"/><path d="M629 130 C629 158 440 152 440 174"/><path d="M755 130 C755 158 440 152 440 174"/></g>
   <rect class="lane" x="66" y="104" width="118" height="26" rx="3"/><rect class="lane" x="192" y="104" width="118" height="26" rx="3"/><rect class="lane" x="318" y="104" width="118" height="26" rx="3"/><rect class="lane" x="444" y="104" width="118" height="26" rx="3"/><rect class="lane" x="570" y="104" width="118" height="26" rx="3"/><rect class="lane" x="696" y="104" width="118" height="26" rx="3"/>
@@ -406,12 +421,6 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
 </svg>
 <figcaption>Terraform-defined · gates run pre- and post-deploy · every finding lands in one place</figcaption>
 </figure>
-          <ul class="facts">
-            <li>Security testing <b>2–3 days → ~35 min</b></li>
-            <li><b>75%</b> fewer security incidents</li>
-            <li>Terraform-defined pipeline, open-source tooling</li>
-            <li><a class="readlink" href="https://medium.com/@smctechblogs/enhancing-security-implementing-shift-left-strategies-for-aws-native-ci-cd-pipeline-with-open-ea1e6785b255" target="_blank" rel="noopener">Read the write-up &rarr;</a></li>
-          </ul>
         </div>
       </article>
 
@@ -423,6 +432,13 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
   <div class="wrap">
     <div class="label">Recognition</div>
     <h2>What the people I've worked with say.</h2>
+    <ul class="awards">
+      <li><b>Published</b> &middot; co-author, SMC TechLab engineering blog, 2024</li>
+      <li><b>Code Commander Award</b> &middot; Spyne AI, 2025</li>
+      <li><b>Architects of Innovation</b> &middot; SMC Global, 2024</li>
+      <li><b>Rising Star Award</b> &middot; CodeLogicX, 2023</li>
+    </ul>
+
 
     <div class="quotes">
       <div class="q">
@@ -438,13 +454,6 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div class="who"><b>Shahid Ali</b>Senior Software Engineer &middot; worked on my team</div>
       </div>
     </div>
-
-    <ul class="awards">
-      <li><b>Published</b> &middot; co-author, SMC TechLab engineering blog, 2024</li>
-      <li><b>Code Commander Award</b> &middot; Spyne AI, 2025</li>
-      <li><b>Architects of Innovation</b> &middot; SMC Global, 2024</li>
-      <li><b>Rising Star Award</b> &middot; CodeLogicX, 2023</li>
-    </ul>
   </div>
 </section>
 
@@ -470,7 +479,7 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
         <div>
           <div class="org">SMC Global Securities · New Delhi</div>
           <h3>Member of Technical Staff II <span class="rdate">Sep 2024 — May 2025</span></h3>
-          <h3>Senior Software Engineer, Cloud &amp; DevOps <span class="rdate">Mar 2024 — Aug 2024</span></h3>
+          <h3>Senior Software Engineer <span class="rdate">Mar 2024 — Aug 2024</span></h3>
           <p>Led the migration of on-premises data centres to AWS in a SEBI-regulated environment, working alongside Motherson Technology Services as cloud partner. Took infrastructure-as-code coverage to 97%, built shift-left security gates into the delivery pipeline, and implemented CloudHSM for bring-your-own-key compliance.</p>
           <div class="award">Architects of Innovation Award, 2024 — for the on-premises to cloud transformation.</div>
         </div>
@@ -542,5 +551,33 @@ a:focus-visible,.brand:focus-visible{outline:2px solid var(--violet);outline-off
   </div>
 </section>
 
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
+
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var visible = {};
+
+  function paint(){
+    for (var i = 0; i < sections.length; i++) {
+      var id = sections[i].id;
+      if (visible[id] && map[id]) {
+        links.forEach(function(l){ l.classList.toggle('active', l === map[id]); });
+        return;
+      }
+    }
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
+    paint();
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(function(sec){ io.observe(sec); });
+})();
+</script>
 </body>
 </html>
